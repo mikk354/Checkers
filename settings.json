@@ -1,20 +1,20 @@
 
 {
     "WindowSize": {
-        "Width": 0,  // ширина поля
-        "Hight": 0   // высота поля
+        "Width": 0,  
+        "Hight": 0   
     },
     "Bot": {
-        "IsWhiteBot": false,  // бот ли белый
-        "IsBlackBot": true,   // бот ли черный
-        "WhiteBotLevel": 0,   // "мастерство" белого бота
-        "BlackBotLevel": 5,   // "мастерство" черного бота
-        "BotScoringType": "NumberAndPotential", // как просчитывается ход бота
-        "BotDelayMS": 0,      // задержка бота
-        "NoRandom": false,    // случайность в выборах хода бота
-        "Optimization": "O1"  // насколько быстро проходит просчет хода бота
+        "IsWhiteBot": false,  
+        "IsBlackBot": true,   
+        "WhiteBotLevel": 0,   
+        "BlackBotLevel": 5,   
+        "BotScoringType": "NumberAndPotential", 
+        "BotDelayMS": 0,     
+        "NoRandom": false,    
+        "Optimization": "O1"  
     },
     "Game": {
-        "MaxNumTurns": 120    // макс количесво ходов
+        "MaxNumTurns": 120    
     }
 }
