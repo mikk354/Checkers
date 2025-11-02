@@ -2,9 +2,9 @@
 
 enum class Response
 {
-    OK,
-    BACK,
-    REPLAY,
-    QUIT,
-    CELL
-};
+    OK,     // подтверждение хода
+    BACK,   // возврат на 1 ход
+    REPLAY, // перезапуск
+    QUIT,   // выход
+    CELL    // выбор клетки
+}; 

@@ -12,12 +12,12 @@ class Hand
     Hand(Board *board) : board(board)
     {
     }
-    tuple<Response, POS_T, POS_T> get_cell() const
+    tuple<Response, POS_T, POS_T> get_cell() const               // запрос команды и координат клетки
     {
-        SDL_Event windowEvent;
-        Response resp = Response::OK;
+        SDL_Event windowEvent;                                   // события связанные с окном
+        Response resp = Response::OK;                            // при выборе подтверждения хода
         int x = -1, y = -1;
-        int xc = -1, yc = -1;
+        int xc = -1, yc = -1;                                    // координаты
         while (true)
         {
             if (SDL_PollEvent(&windowEvent))
@@ -25,7 +25,7 @@ class Hand
                 switch (windowEvent.type)
                 {
                 case SDL_QUIT:
-                    resp = Response::QUIT;
+                    resp = Response::QUIT;                       // при ответе выход заканчивается
                     break;
                 case SDL_MOUSEBUTTONDOWN:
                     x = windowEvent.motion.x;
@@ -34,7 +34,7 @@ class Hand
                     yc = int(x / (board->W / 10) - 1);
                     if (xc == -1 && yc == -1 && board->history_mtx.size() > 1)
                     {
-                        resp = Response::BACK;
+                        resp = Response::BACK;                   // события при использовании мыши, возврат хода, перезапуск, выбор клетки
                     }
                     else if (xc == -1 && yc == 8)
                     {
@@ -53,15 +53,15 @@ class Hand
                 case SDL_WINDOWEVENT:
                     if (windowEvent.window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
                     {
-                        board->reset_window_size();
+                        board->reset_window_size();               // изменение размера окна
                         break;
                     }
                 }
                 if (resp != Response::OK)
-                    break;
+                    break;                                        // выходит из цикла при подтверждении хода
             }
         }
-        return {resp, xc, yc};
+        return {resp, xc, yc};                                    // получение команды и координат клетки
     }
 
     Response wait() const
@@ -78,7 +78,7 @@ class Hand
                     resp = Response::QUIT;
                     break;
                 case SDL_WINDOWEVENT_SIZE_CHANGED:
-                    board->reset_window_size();
+                    board->reset_window_size();                    // ожидание на время хода бота
                     break;
                 case SDL_MOUSEBUTTONDOWN: {
                     int x = windowEvent.motion.x;
@@ -98,5 +98,5 @@ class Hand
     }
 
   private:
-    Board *board;
+    Board *board;                                                   // для записи на поле
 };
